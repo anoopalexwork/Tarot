@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://on6s1aqel0da"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ehp6g"]
+[ext_resource type="Script" path="res://desk.gd" id="2_23810"]
+[ext_resource type="Script" path="res://camera.gd" id="2_q66pu"]
+[ext_resource type="Script" path="res://toolbar.gd" id="4_5po4m"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ehp6g")
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("2_q66pu")
+
+[node name="Toolbar" type="CanvasLayer" parent="."]
+script = ExtResource("4_5po4m")
+
+[node name="Reshuffle" type="Button" parent="Toolbar"]
+top_level = true
+offset_right = 200.0
+offset_bottom = 60.0
+text = "Reshuffle"
+
+[node name="DeckType" type="ItemList" parent="Toolbar"]
+offset_left = 242.0
+offset_top = 1.0
+offset_right = 442.0
+offset_bottom = 61.0
+item_count = 2
+item_0/text = "RiderWaite"
+item_1/text = "Marseilles"
+
+[node name="Desk" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("2_23810")
+
+[connection signal="pressed" from="Toolbar/Reshuffle" to="." method="_on_reshuffle_pressed"]
